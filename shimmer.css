@@ -1,0 +1,77 @@
+/* search-container */
+.shimmer-search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.shimmer-input{
+  background-color: gray;
+  width: 268px;
+  height: 46px;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.shimmer-list {
+  display: flex;
+  padding: 10vh 10vw;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.shimmer {
+  width: 20vw;
+
+  height: 58vh;
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: linear-gradient(90deg, transparent 25%, #f0f0f0 50%, transparent 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+.shimmer-image{
+  width: 100%;
+  min-height: 160px;
+  height: 35vh;
+  background-color: rgb(151, 144, 144);
+  border-radius: 5px;
+}
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.shimmer-info * {
+  margin: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.shimmer-area {
+  width: 40%;
+  height: 2.5vh;
+  background-color: gray;
+}
+
+.shimmer-name {
+  width: 90%;
+  height: 3vh;
+  background-color: #979393;
+}
+
+.shimmer-cuisines {
+  width: 95%;
+  height: 2.5vh ;
+  background-color: #979393;
+}
+
+@keyframes shimmer {
+  0% {
+    background-color: -200% 0;
+  }
+  100% {
+    background-color: 200% 0;
+  }
+}
