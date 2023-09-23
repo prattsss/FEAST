@@ -1,8 +1,11 @@
+import { Link } from "react-router-dom";
+import { imgCdn } from "./constant";
 const RestaurantCard = (restaurants) => {
-  const { cloudinaryImageId, name, areaName, cuisines } = restaurants;
+  const { cloudinaryImageId, name, areaName, cuisines, id } = restaurants;
   return (
+    <Link to={"/restaurant/"+ id}>
     <div className="restaurant-card">
-      <img alt="restaurant food" src={"https://media-assets.swiggy.com/swiggy/image/upload/" + cloudinaryImageId} />
+      <img alt="restaurant food" src={imgCdn +""+cloudinaryImageId} />
       <div className="info">
         <h2 className="r-name">{name}</h2>
         <h2 className="r-area">{areaName}</h2>
@@ -10,6 +13,7 @@ const RestaurantCard = (restaurants) => {
       </div>
 
     </div>
+    </Link>
 
   )
 }

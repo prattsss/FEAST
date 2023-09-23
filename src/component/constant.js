@@ -1,4 +1,4 @@
-
+export const imgCdn = "https://media-assets.swiggy.com/swiggy/image/upload/"
 export const restaurantList = [
 
     {

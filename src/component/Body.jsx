@@ -2,6 +2,7 @@ import { restaurantList } from "./constant";
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./shimmer";
+import { Link } from "react-router-dom";
 
 function searchResult(searchInput, restaurantData) {
   return restaurantData.filter((restaurant) =>
@@ -24,15 +25,17 @@ const Body = () => {
   }, []);
   async function apiCall() {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.61583319140582&lng=75.8019981533289&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.61583319140582&lng=75.8019981533289&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
+  
     setRestaurantData(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilteredRestaurants(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
+    console.log(json?.data?.cards)
   }
   if (!restaurantData) return null;
 
@@ -53,6 +56,8 @@ const Body = () => {
         </button>
         {/* <button className="btn" onClick={resetSearch}>Reset</button> */}
       </div>
+
+
       <div className="restaurant-list">
         {filteredRestaurants.length === 0 ? (
           <>

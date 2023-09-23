@@ -5,20 +5,20 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.16.0"
   },
-  
-  "name": "assignment-3",
+  "name": "feast",
   "version": "1.0.0",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html"
   },
-  "author": "",
+  "author": "pratts",
   "license": "ISC",
-  "description": ""
-  ,
-"browserslist": [
-  "Last two chrome versions"
-]
+  "description": "Food Ordering App",
+  "browserslist": [
+    "Last two chrome versions"
+  ],
+  "main": "index.js"
 }
