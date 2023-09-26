@@ -9,6 +9,7 @@ import Contact from "./component/contact";
 import Cart from "./component/cart";
 import About from "./component/about"
 import RestaurantPage from "./component/restaurantpage";
+import LoginForm from "./component/login";
 
 
 
@@ -17,6 +18,7 @@ const AppLayout = () => {
   return (
     <>
       <Header />
+      <LoginForm/>
       <Outlet />
       <Footer />
     </>
