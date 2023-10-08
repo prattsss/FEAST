@@ -23,6 +23,7 @@ const Body = () => {
   useEffect(() => {
     apiCall();
   }, []);
+
   async function apiCall() {
     const data = await fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.61583319140582&lng=75.8019981533289&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
