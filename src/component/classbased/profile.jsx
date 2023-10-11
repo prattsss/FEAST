@@ -4,17 +4,24 @@ class Profile extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      count: 0,
-      count2: "hey"
+     userInfo : {
+      username: "",
+      avatar_url:"",
+     }
+      
     }
+  }
+  async componentDidMount(){
+   const data = await fetch('  https://api.github.com/users/prattsss')
+   const json = await data.json();
+   this.setState({userInfo: json})
   }
   render(){
     return(
       <>
       <h1>Class Based Profile</h1>
-      <h2>name : {this.props.name}</h2>
-      <h2> count : {this.state.count}</h2>
-      <button onClick={()=> this.setState({count:"changed"})}>{this.state.count2}</button>
+      <h2>name : {this.state.userInfo.name}</h2>
+      <img  src = {this.state.userInfo.avatar_url}/>
       </>
     )
   }

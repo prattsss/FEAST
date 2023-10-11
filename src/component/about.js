@@ -4,7 +4,7 @@ const About =()=>{
  return (
     <div className="about">
       <h1>About</h1><br/>
-      < Profile name= {"pratts"} />
+      < Profile/>
     </div>
   )
 }
