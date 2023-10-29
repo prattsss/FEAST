@@ -1,7 +1,6 @@
-import { restaurantList } from "./constant";
+import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
-import { useState, useEffect } from "react";
-import Shimmer from "./shimmer";
+import Shimmer from "./Shimmer";
 
 function searchResult(searchInput, restaurantData) {
   return restaurantData.filter((restaurant) =>
@@ -10,7 +9,6 @@ function searchResult(searchInput, restaurantData) {
 }
 
 const Body = () => {
-
   const [searchInput, setSearchInput] = useState("");
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [restaurantData, setRestaurantData] = useState([]);
@@ -26,18 +24,27 @@ const Body = () => {
 
   async function apiCall() {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.61583319140582&lng=75.8019981533289&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/mapi/homepage/getCards?lat=22.61583319140582&lng=75.8019981533289"
     );
     const json = await data.json();
-  
     setRestaurantData(
-      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.success?.cards[3]?.gridWidget?.gridElements?.infoWithStyle
+        ?.restaurants
     );
     setFilteredRestaurants(
-      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    console.log(json?.data?.cards)
-  }
+      json?.data?.success?.cards[3]?.gridWidget?.gridElements?.infoWithStyle
+        ?.restaurants
+    );  
+  //   const trial = json?.data?.success?.cards;
+  //   const main = trial.map(arr => {
+  //   const nulled = Object.values(arr).map(elem=>{
+  //     const level2 = Object.values(elem).map(a => Object.keys(a));
+  //     console.log(level2)
+  //    return  level2
+  //     })
+  //     return nulled
+  // })
+}
   if (!restaurantData) return null;
 
   return restaurantData.length === 0 ? (
@@ -57,7 +64,6 @@ const Body = () => {
         </button>
         {/* <button className="btn" onClick={resetSearch}>Reset</button> */}
       </div>
-
 
       <div className="restaurant-list">
         {filteredRestaurants.length === 0 ? (

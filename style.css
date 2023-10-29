@@ -3,6 +3,7 @@
 * {
   color: #333333;
   font-family: 'Baloo Bhaina 2', cursive;
+  text-decoration: none;
 }
 
 body {
@@ -128,8 +129,8 @@ body {
 
 .r-name {
   width: 90%;
+  line-height: 30px;
   font-size: 3vh;
-  line-height: 20px;
   font-family: roboto;
   color: #333333;
 }

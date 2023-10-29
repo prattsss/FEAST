@@ -15,8 +15,8 @@ const Header = () => {
           <li><Link to="/contact">Contact </Link></li>
           <li><Link to="/cart">Cart </Link></li>
         </ul>
-        {isLoggedIn ? (<button onClick={() => setisLoggedIn(false)}>LogOut</button>) : (<button onClick={() => setisLoggedIn(true)}> LogIn </button>)
-        }
+        {/* {isLoggedIn ? (<button onClick={() => setisLoggedIn(false)}>LogOut</button>) : (<button onClick={() => setisLoggedIn(true)}> LogIn </button>)
+        } */}
         <MenuBar />
       </div>
     </div>

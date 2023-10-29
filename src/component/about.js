@@ -1,10 +1,12 @@
-import React from "react"
-import Profile from "./classbased/profile";
-const About =()=>{
- return (
+import React from "react";
+import { Outlet } from "react-router-dom";
+const About = () => {
+  console.log("aboutsect")
+  return (
     <div className="about">
-      <h1>About</h1><br/>
-      < Profile/>
+   
+      <h1>About</h1><br />
+      < Outlet />
     </div>
   )
 }

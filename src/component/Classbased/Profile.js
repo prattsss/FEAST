@@ -15,7 +15,13 @@ class Profile extends React.Component{
    const data = await fetch('  https://api.github.com/users/prattsss')
    const json = await data.json();
    this.setState({userInfo: json})
+   this.timer = setInterval(() => {
+    console.log(8)
+   }, 1000);
   }
+  componentWillUnmount(){
+    clearInterval(this.timer)
+  } 
   render(){
     return(
       <>
