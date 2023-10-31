@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
+import useOnlineStatus from "./useOnlineStatus";
+import { restaurantLocalData } from "./config";
+
 
 function searchResult(searchInput, restaurantData) {
   return restaurantData.filter((restaurant) =>
@@ -23,34 +26,38 @@ const Body = () => {
   }, []);
 
   async function apiCall() {
-    const data = await fetch(
-      "https://www.swiggy.com/mapi/homepage/getCards?lat=22.61583319140582&lng=75.8019981533289"
-    );
-    const json = await data.json();
+    // const data = await fetch(
+    //   "https://www.swiggy.com/mapi/homepage/getCards?lat=22.7195687&lng=75.8577258"
+    // );
+    // const json = await data.json();
+    // const trial = json?.data?.success?.cards.map(arr => {
+    //   const dataNeeded = arr?.gridWidget?.gridElements?.infoWithStyle?.restaurants;
+    //   if (dataNeeded)
+    //     return arr || null
+    // });
+    const json = restaurantLocalData;
+
     setRestaurantData(
-      json?.data?.success?.cards[3]?.gridWidget?.gridElements?.infoWithStyle
+      json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
         ?.restaurants
     );
     setFilteredRestaurants(
-      json?.data?.success?.cards[3]?.gridWidget?.gridElements?.infoWithStyle
+      json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
         ?.restaurants
-    );  
-  //   const trial = json?.data?.success?.cards;
-  //   const main = trial.map(arr => {
-  //   const nulled = Object.values(arr).map(elem=>{
-  //     const level2 = Object.values(elem).map(a => Object.keys(a));
-  //     console.log(level2)
-  //    return  level2
-  //     })
-  //     return nulled
-  // })
-}
-  if (!restaurantData) return null;
+    );
 
+  }
+  const onlineStatus = useOnlineStatus();
+  if(!onlineStatus) return <div>No Internet Connection</div>
+  if (!restaurantData) return null;
+ 
   return restaurantData.length === 0 ? (
     <Shimmer />
   ) : (
     <>
+     
+ 
+     
       <div className="search-container">
         <input
           placeholder="Search"

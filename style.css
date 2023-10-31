@@ -93,20 +93,31 @@ body {
   justify-content: center;
 }
 
+
 .restaurant-card {
-  width: 20vw;
+  width: 22vw;
   height: 58vh;
   border: solid 1px #333333;
   padding: 10px;
   margin-bottom: 20px;
 }
-
+@media (max-width: 600px) {
+  .restaurant-card{
+    width: 30vh;
+  }
+  }
+@media (max-width: 2000) and (min-width:600) {
+  .restaurant-card{
+    min-width: 40vh;
+  }
+}
 .restaurant-card>img {
   width: 100%;
   min-height: 160px;
   height: 35vh;
   object-fit: cover;
   border-radius: 5px;
+  
 }
 
 .info {
