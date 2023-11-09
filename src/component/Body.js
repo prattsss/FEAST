@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-import useOnlineStatus from "./useOnlineStatus";
+import useOnlineStatus from "../utils/useOnlineStatus"
 import { restaurantLocalData } from "./config";
 
 
@@ -48,7 +48,7 @@ const Body = () => {
 
   }
   const onlineStatus = useOnlineStatus();
-  if(!onlineStatus) return <div>No Internet Connection</div>
+  if(!onlineStatus) return <div> 🔴No Internet Connection</div>
   if (!restaurantData) return null;
  
   return restaurantData.length === 0 ? (
