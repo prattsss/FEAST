@@ -6,32 +6,47 @@ const Header = () => {
   const checkOnline = useOnlineStatus();
   return (
     <>
-      <div className="navbar">
-        <div className="logo">
-          <h1>F<span>EA</span>S<span>T</span></h1>
+      <div className="navbar flex justify-between align-middle p-5 border-b-2 border-gray-300 
+      bg-white">
+        <div className="logo flex text-3xl font-semibold ">
+          <h1>F<span className="text-yellow-500">EA</span>S<span className="text-yellow-500">T</span></h1>
         </div>
-        <div className="menus">
-          <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/about">About Us</Link></li>
-            <li><Link to="/contact">Contact </Link></li>
-            <li><Link to="/cart">Cart </Link></li>
-            <li> Status: {checkOnline ? "🟢" : "🔴" }</li>
+
+        <div className="flex gap-5">
+          <input  type="text" placeholder="search" />
+          <ul className="flex gap-3 text-xl mt-[3px] max-sm:invisible  align-middle">
+
+            <li><Link to="/"><i class="ri-search-line flex-col align-middle "></i>
+              Home
+            </Link></li>
+            <li><Link to="/about"> <i class="ri-percent-line flex-col align-middle  "></i>
+              Offers
+            </Link></li>
+            <li><Link to="/contact"><i class="ri-question-line flex-col align-middle "></i>
+              Help
+            </Link></li>
+            <li><Link to="/cart"><i class="ri-shopping-cart-2-line flex-col align-middle "></i>
+              Cart
+            </Link></li>
+            <li> Status: {checkOnline ? "🟢" : "🔴"}</li>
+            {/* <MenuBar /> */}
           </ul>
-          {/* {isLoggedIn ? (<button onClick={() => setisLoggedIn(false)}>LogOut</button>) : (<button onClick={() => setisLoggedIn(true)}> LogIn </button>)
-      } */}
-          <MenuBar />
         </div>
+
+
+
       </div>
-   
+
     </>
 
   )
 }
-const MenuBar = () => {
-  return (
-    <i className="ri-menu-3-line " id="menubar"></i>
-  )
-}
+// const MenuBar = () => {
+//   return (
+//     <h1>runs</h1>
+// <i className="ri-menu-3-line invisible max-sm:visible "></i>
+
+//   )
+// }
 
 export default Header

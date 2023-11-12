@@ -36,13 +36,13 @@ const Body = () => {
     //     return arr || null
     // });
     const json = restaurantLocalData;
-
+   
     setRestaurantData(
-      json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
+      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
     setFilteredRestaurants(
-      json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
+      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
 
@@ -58,21 +58,22 @@ const Body = () => {
      
  
      
-      <div className="search-container">
+      <div className="search-container flex justify-center align-middle p-5">
         <input
           placeholder="Search"
-          className="search-input"
+          className="p-3 text-lg  border-x-2 border-y-2 border-r-0 rounded-tl-md rounded-bl-md border-gray-600 caret-green-400"
           type="text"
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
         />
-        <button className="search-btn" onClick={handleSearch}>
+        <button className="py-1 px-2  bg-tranparent border-x-2 border-y-2 border-gray-600 active:bg-blue-100
+        rounded-tr rounded-br" onClick={handleSearch}>
           Search
         </button>
         {/* <button className="btn" onClick={resetSearch}>Reset</button> */}
       </div>
 
-      <div className="restaurant-list">
+      <div className="flex bg-blue-50 flex-wrap p-10 gap-10 align-middle justify-center">
         {filteredRestaurants.length === 0 ? (
           <>
             {" "}

@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2&family=Roboto&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+* {
+  color: #333333;
+  font-family: 'Baloo Bhaina 2', cursive;
+  text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
