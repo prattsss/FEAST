@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard,{ promotedRestaurants} from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import useOnlineStatus from "../utils/useOnlineStatus"
 import { restaurantLocalData } from "./config";
@@ -15,6 +15,9 @@ const Body = () => {
   const [searchInput, setSearchInput] = useState("");
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [restaurantData, setRestaurantData] = useState([]);
+
+  const PromotedRestaurants = promotedRestaurants(RestaurantCard );
+
   function handleSearch() {
     const data = searchResult(searchInput, restaurantData);
     setFilteredRestaurants(data);
@@ -28,7 +31,7 @@ const Body = () => {
 
     setRestaurantData(
       json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
-        ?.restaurants
+        ?.restaurants   
     );
     setFilteredRestaurants(
       json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
@@ -65,16 +68,16 @@ const Body = () => {
       <div className="flex bg-blue-50 flex-wrap p-10 gap-10 align-middle justify-center">
         {filteredRestaurants.length === 0 ? (
           <>
-            {" "}
-            <h1>NO Matches Found!</h1>
+    
             {restaurantData.map((restaurant) => {
-              return (
-                <RestaurantCard key={restaurant.info.id} {...restaurant.info} />
+              return(
+                <RestaurantCard key={restaurant.info.id} {...restaurant.info} /> 
+             
               );
             })}
           </>
         ) : (
-          filteredRestaurants.map((restaurant) => (
+          filteredRestaurants.map((restaurant) =>  restaurant.info.promoted ? (<PromotedRestaurants key={restaurant.info.id} {...restaurant.info}/>) : (
             <RestaurantCard key={restaurant.info.id} {...restaurant.info} />
           ))
         )}

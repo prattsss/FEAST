@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { imgCdn } from "./Constant";
 const RestaurantCard = (restaurants) => {
-  const { cloudinaryImageId, name, areaName, cuisines, id,avgRating } = restaurants;
+  const { cloudinaryImageId, name, areaName, cuisines, id, avgRating } = restaurants;
   return (
     <Link to={"/restaurant/" + id}>
       <div className="restaurant-card w-[24vw] flex-row align-middle  overflow-hidden gap-5 mb-11 p-1 border-x-2 border-y-2 border-gray-700 h-[58vh] rounded-md
@@ -20,6 +20,18 @@ const RestaurantCard = (restaurants) => {
 
   )
 }
+
+export const promotedRestaurants = (RestaurantCard) => {
+  return (restaurant) => {
+    return (
+      <div>
+        <label className="absolute px-2 py-1 rounded-tl-sm rounded-br-lg bg-[#EDD5CB]">Promoted</label>
+        <RestaurantCard {...restaurant}/>
+      </div>
+    )
+  }
+}
+
 
 export default RestaurantCard
 

@@ -13,19 +13,24 @@ const Header = () => {
         </div>
 
         <div className="flex gap-5">
-          <input  type="text" placeholder="search" />
+          {/* <input type="text" placeholder="search" /> */}
           <ul className="flex gap-3 text-xl mt-[3px] max-sm:invisible  align-middle">
 
-            <li><Link to="/"><i className="ri-search-line flex-col align-middle "></i>
+            <li><Link to="/">
+              {/* <i className="ri-search-line flex-col align-middle "></i> */}
               Home
             </Link></li>
-            <li><Link to="/about"> <i className="ri-percent-line flex-col align-middle  "></i>
-              Offers
-            </Link></li>
-            <li><Link to="/contact"><i className="ri-question-line flex-col align-middle "></i>
+            <li>
+              <Link to="/about">
+                {/* <i className="ri-percent-line flex-col align-middle  "></i> */}
+                Offers
+              </Link></li>
+            <li><Link to="/contact">
+              {/* <i className="ri-question-line flex-col align-middle "></i> */}
               Help
             </Link></li>
-            <li><Link to="/cart"><i className="ri-shopping-cart-2-line flex-col align-middle "></i>
+            <li><Link to="/cart">
+              {/* <i className="ri-shopping-cart-2-line flex-col align-middle "></i> */}
               Cart
             </Link></li>
             <li> Status: {checkOnline ? "🟢" : "🔴"}</li>
