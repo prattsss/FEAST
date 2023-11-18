@@ -12,7 +12,11 @@ const useRestaurant = (restId) => {
 
 
     setRestaurant(json?.data?.cards[0]?.card?.card?.info)
-    const menuList = json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(c => c.card?.card?.["@type"] === 'type.googleapis.com/swiggy.presentation.food.v2.ItemCategory')
+
+    const test = json?.data?.cards.filter(card => card.groupedCard && card)
+
+    const menuList = test[0]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(c => c.card?.card?.["@type"] === 'type.googleapis.com/swiggy.presentation.food.v2.ItemCategory')
+
     setMenuList(menuList)
     //  console.log(json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards)
   }

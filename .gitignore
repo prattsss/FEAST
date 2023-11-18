@@ -8,6 +8,7 @@ bin-release/
 /node_modules
 /.parcel-cache/
 /dist/
+/coverage
 
 # Other files and folders
 .settings/

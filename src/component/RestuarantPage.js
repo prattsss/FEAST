@@ -26,7 +26,8 @@ const RestaurantPage = () => {
         </div>
       </div>
 
-      {menuList.map((list, index) => <RestaurantMenu key={index} menu={list?.card?.card} showMenu={index === showIndex ? true : false}
+      {menuList.map((list, index) => <RestaurantMenu key={index} name={restaurant.name}
+        menu={list?.card?.card} showMenu={index === showIndex ? true : false}
         setShowIndex={() => setShowIndex(index)} />)}
     </>
   )

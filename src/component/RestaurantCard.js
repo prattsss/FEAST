@@ -26,7 +26,7 @@ export const promotedRestaurants = (RestaurantCard) => {
     return (
       <div>
         <label className="absolute px-2 py-1 rounded-tl-sm rounded-br-lg bg-[#EDD5CB]">Promoted</label>
-        <RestaurantCard {...restaurant}/>
+        <RestaurantCard {...restaurant} />
       </div>
     )
   }

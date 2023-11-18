@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
-import RestaurantCard,{ promotedRestaurants} from "./RestaurantCard";
+import { useContext, useEffect, useState } from "react";
+import userContext from "../utils/useContext";
+import useOnlineStatus from "../utils/useOnlineStatus";
+import RestaurantCard, { promotedRestaurants } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-import useOnlineStatus from "../utils/useOnlineStatus"
 import { restaurantLocalData } from "./config";
 
 
@@ -12,11 +13,12 @@ function searchResult(searchInput, restaurantData) {
 }
 
 const Body = () => {
+  const { userName, setUserData } = useContext(userContext)
   const [searchInput, setSearchInput] = useState("");
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [restaurantData, setRestaurantData] = useState([]);
 
-  const PromotedRestaurants = promotedRestaurants(RestaurantCard );
+  const PromotedRestaurants = promotedRestaurants(RestaurantCard);
 
   function handleSearch() {
     const data = searchResult(searchInput, restaurantData);
@@ -31,7 +33,7 @@ const Body = () => {
 
     setRestaurantData(
       json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
-        ?.restaurants   
+        ?.restaurants
     );
     setFilteredRestaurants(
       json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
@@ -47,9 +49,6 @@ const Body = () => {
     <Shimmer />
   ) : (
     <>
-
-
-
       <div className="search-container flex justify-center align-middle p-5">
         <input
           placeholder="Search"
@@ -63,21 +62,29 @@ const Body = () => {
           Search
         </button>
         {/* <button className="btn" onClick={resetSearch}>Reset</button> */}
+
+        <input
+          placeholder="Search"
+          className="p-3 text-lg  border-x-2 border-y-2 border-r-0 rounded-tl-md rounded-bl-md border-gray-600 caret-green-400"
+          type="text"
+          value={userName}
+          onChange={(e) => setUserData(e.target.value)}
+        />
       </div>
 
       <div className="flex bg-blue-50 flex-wrap p-10 gap-10 align-middle justify-center">
         {filteredRestaurants.length === 0 ? (
           <>
-    
+
             {restaurantData.map((restaurant) => {
-              return(
-                <RestaurantCard key={restaurant.info.id} {...restaurant.info} /> 
-             
+              return (
+                <RestaurantCard key={restaurant.info.id} {...restaurant.info} />
+
               );
             })}
           </>
         ) : (
-          filteredRestaurants.map((restaurant) =>  restaurant.info.promoted ? (<PromotedRestaurants key={restaurant.info.id} {...restaurant.info}/>) : (
+          filteredRestaurants.map((restaurant) => restaurant.info.promoted ? (<PromotedRestaurants key={restaurant.info.id} {...restaurant.info} />) : (
             <RestaurantCard key={restaurant.info.id} {...restaurant.info} />
           ))
         )}

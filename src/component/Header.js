@@ -1,15 +1,22 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { useSelector } from 'react-redux'
 import { Link } from "react-router-dom"
+import userContext from "../utils/useContext"
 import useOnlineStatus from "../utils/useOnlineStatus"
 const Header = () => {
   const [isLoggedIn, setisLoggedIn] = useState(false)
   const checkOnline = useOnlineStatus();
+  const { userName, } = useContext(userContext);
+  const cartItems = useSelector((store) => store.cart.items)
+  console.log(cartItems)
   return (
+
     <>
       <div className="navbar flex justify-between align-middle p-5 border-b-2 border-gray-300 
       bg-white">
         <div className="logo flex text-3xl font-semibold ">
           <h1>F<span className="text-yellow-500">EA</span>S<span className="text-yellow-500">T</span></h1>
+          {/* <img className="w-20" src={reactLogo} alt="feast" /> */}
         </div>
 
         <div className="flex gap-5">
@@ -31,9 +38,10 @@ const Header = () => {
             </Link></li>
             <li><Link to="/cart">
               {/* <i className="ri-shopping-cart-2-line flex-col align-middle "></i> */}
-              Cart
+              Cart ({cartItems.length})
             </Link></li>
             <li> Status: {checkOnline ? "🟢" : "🔴"}</li>
+            <li>  {userName}</li>
             {/* <MenuBar /> */}
           </ul>
         </div>

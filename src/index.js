@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Suspense, lazy, useEffect, useState } from "react";
 import ReactDom from 'react-dom/client';
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-import About from "./Component/About";
+import { Provider } from "react-redux";
+import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
 import Body from "./Component/Body";
 import Cart from "./Component/Cart";
 import Profile from "./Component/Classbased/Profile";
@@ -10,18 +10,28 @@ import Error from "./Component/Error";
 import Footer from "./Component/Footer";
 import Header from "./Component/Header";
 import RestaurantPage from "./Component/RestuarantPage";
+import appStore from "./utils/appStore";
+import userContext from "./utils/useContext";
 
-
-
+const About = lazy(() => import("./Component/About"));
 
 const AppLayout = () => {
+  //authentication
+  const [userData, setUserData] = useState("")
+  useEffect(() => {
+    const data = {
+      name: "Pratts",
+    }
+    setUserData(data.name)
+  }, []);
   return (
-    <>
-      <Header />
-      {/* <LoginForm/> */}
-      <Outlet />
+    <Provider store={appStore}>
+      <userContext.Provider value={{ userName: userData, setUserData }}>
+        <Header />
+        <Outlet />
+      </userContext.Provider>
       <Footer />
-    </>
+    </Provider>
   )
 }
 const appRouter = createBrowserRouter([
@@ -40,10 +50,10 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <About />,
+        element: <Suspense fallback={<h1>ara hai arra hai</h1>}><About /></Suspense>,
         children: [{
-          path:"profile",
-          element: <Profile/>
+          path: "profile",
+          element: <Profile />
         }]
       },
       {
